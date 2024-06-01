@@ -22,10 +22,7 @@ public class Main {
         boolean win = false;
         char simbolo;
 
-        System.out.println("(i) Para colocar las fichas, debeis usar como referencia el teclado numerico.");
-
-        System.out.println("Jugador 1: \'x\'\nJugador 2: \'o\'\n\n\n" + tablero);
-
+        tablero.mostrarInfo();
 
         //Partida
         do {
@@ -78,10 +75,18 @@ public class Main {
         do {
             rep = false;
             System.out.print("Jugador [" + simbolo + "]: ");
-            pos = sc.nextInt();
+            try {
+                pos = sc.nextInt();
+            }catch(Exception e) {
+                System.out.println("NO se permiten letras, si tiene dudas revisa las reglas.");
+                rep = true;
+                pos = 0;
+                sc.nextLine();
+                continue;
+            }
 
 
-            if (pos < 0 || pos > 9) {
+            if (pos < 1 || pos > 9) {
                 System.out.println("Posición incorrecta");
                 rep = true;
             }else{

@@ -1,6 +1,5 @@
 package Pack;
 
-import java.util.Arrays;
 
 /**
  * <h1>Tablero.java</h1><hr>
@@ -200,5 +199,18 @@ public class Tablero {
 
         return win;
     }
+
+    public void mostrarInfo(){
+
+        System.out.println("(i) Para colocar las fichas, debeis usar como referencia el teclado numerico.");
+
+        System.out.println( "|7|8|9|\n" +
+                            "|4|5|6|\n" +
+                            "|1|2|3|\n");
+
+        System.out.println("Jugador 1: \'x\'\nJugador 2: \'o\'\n\n\n");
+
+    }
+
 
 }
