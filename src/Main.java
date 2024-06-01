@@ -1,0 +1,97 @@
+import Pack.Tablero;
+
+import java.util.Scanner;
+
+/**
+ * <h1>Main.java</h1><hr>
+ * <p>Esta clase represanta el main del programa</p>
+ *
+ * @author Adrián Suárez Valdayo
+ * @vesrion 23-may-2024
+ */
+public class Main {
+
+    static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+
+        Tablero tablero = new Tablero();
+        int turno = 1;
+        int pos;
+        boolean win = false;
+        char simbolo;
+
+        System.out.println("(i) Para colocar las fichas, debeis usar como referencia el teclado numerico.");
+
+        System.out.println("Jugador 1: \'x\'\nJugador 2: \'o\'\n\n\n" + tablero);
+
+
+        //Partida
+        do {
+
+            if(turno % 2 == 0)
+                simbolo = 'o';
+            else
+                simbolo = 'x';
+
+            pos = interaccion(simbolo, tablero);
+
+            if(turno >= 5){
+
+                win = tablero.comprobar(pos);
+            }
+
+            System.out.println("\nTurno: " + turno + "\n" + tablero);
+
+            turno++;
+        }while(!win && turno < 10);
+
+
+        //Fin de la partida
+        System.out.println("Fin de la partida:\n" + tablero);
+
+        if (win) {
+            System.out.println("Ha ganado el Jugador [" + simbolo + "]!!");
+        }else
+            System.out.println("Empate");
+
+
+        System.out.println("Pulse \"enter\" para cerrar");
+        sc.nextLine();//FFLUSH
+        sc.nextLine();
+
+    }
+
+
+    /**
+     * Este metodo se encarga de recoger la posición en la que queremos colocar la ficha, colocandola en el proceso y evitar posibles errores de usuario
+     * @param simbolo El simbolo del jugador
+     * @param tablero El tablero donde se juega
+     * @return int. La posición donde se ha colocado la ultima ficha
+     */
+    static int interaccion (char simbolo, Tablero tablero){
+
+        int pos;
+        boolean rep;
+
+        do {
+            rep = false;
+            System.out.print("Jugador [" + simbolo + "]: ");
+            pos = sc.nextInt();
+
+
+            if (pos < 0 || pos > 9) {
+                System.out.println("Posición incorrecta");
+                rep = true;
+            }else{
+                rep = !tablero.colocarFicha(pos, simbolo);
+            }
+
+        }while (rep);
+
+
+        return pos;
+
+    }
+}
