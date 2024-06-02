@@ -61,11 +61,11 @@ public class Tablero {
     }
 
     /**
-     * Metodo auxiliar, traduce la posición a coordenadas para tratar la matriz
+     * Metodo que traduce la posición a coordenadas para tratar la matriz
      * @param num el numero que se va a traducir
      * @return int[2]. El primer valor representa la fila y el segundo la columna
      */
-    private int[] seleccionarCasilla(int num) {
+    public int[] seleccionarCasilla(int num) {
 
         int fila = -1, columna = -1, cont = 0;
         int[] ret = new int[2];

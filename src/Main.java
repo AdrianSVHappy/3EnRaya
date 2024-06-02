@@ -1,3 +1,4 @@
+import Pack.PlayerCPU;
 import Pack.Tablero;
 
 import java.util.Scanner;
@@ -15,10 +16,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-
         Tablero tablero = new Tablero();
+        PlayerCPU cpu = new PlayerCPU();
         int turno = 1;
-        int pos;
+        int pos = 0;
+        int difi = 1;
         boolean win = false;
         char simbolo;
 
@@ -27,12 +29,16 @@ public class Main {
         //Partida
         do {
 
-            if(turno % 2 == 0)
+            if(turno % 2 == 0) {
                 simbolo = 'o';
-            else
+                pos = cpu.colocarFicha(difi, tablero, pos);
+            }
+            else {
                 simbolo = 'x';
+                pos = interaccion(simbolo, tablero);
+            }
 
-            pos = interaccion(simbolo, tablero);
+
 
             if(turno >= 5){
 
