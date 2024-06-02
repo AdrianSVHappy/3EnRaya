@@ -200,6 +200,9 @@ public class Tablero {
         return win;
     }
 
+    /**
+     * Metodo para mostrar por pantalla las instrucciones del juego
+     */
     public void mostrarInfo(){
 
         System.out.println("(i) Para colocar las fichas, debeis usar como referencia el teclado numerico.");
